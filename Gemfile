@@ -39,7 +39,7 @@ group :development, :test do
 end
 
 group :test do 
-	gem 'capybara', '~> 2.2.0'
+  gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
 	gem 'shoulda-matchers'
 end
 
