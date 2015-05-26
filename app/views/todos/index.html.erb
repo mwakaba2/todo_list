@@ -13,7 +13,7 @@
 
   <tbody>
     <% @todos.each do |todo| %>
-      <tr>
+      <tr id="<%= dom_id(todo) %>">
         <td><%= todo.title %></td>
         <td><%= todo.description %></td>
         <td><%= link_to 'Show', todo %></td>
