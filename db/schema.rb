@@ -11,22 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526195957) do
+ActiveRecord::Schema.define(version: 20140130223357) do
 
-  create_table "todo_items", force: :cascade do |t|
-    t.integer  "todo_id"
+  create_table "todo_items", force: true do |t|
+    t.integer  "todo_list_id"
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "completed_at"
   end
 
-  add_index "todo_items", ["todo_id"], name: "index_todo_items_on_todo_id"
+  add_index "todo_items", ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
 
-  create_table "todos", force: :cascade do |t|
+  create_table "todo_lists", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email"
 
 end

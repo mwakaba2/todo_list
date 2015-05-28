@@ -1,10 +1,15 @@
-Rails.application.routes.draw do
-  resources :todos do
-    resources :todo_items
+Odot::Application.routes.draw do
+  resources :users
 
+  resources :todo_lists do
+    resources :todo_items do
+      member do
+        patch :complete
+      end
+    end
   end
+  root 'todo_lists#index'
 
-  root 'todos#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
