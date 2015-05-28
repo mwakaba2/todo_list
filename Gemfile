@@ -16,6 +16,8 @@ group :doc do
 end
 
 group :development, :test do
+	gem 'test-unit'
+	gem 'minitest'
   gem 'rspec-rails', '~> 2.0'
 end
 
