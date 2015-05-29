@@ -6,7 +6,8 @@ describe "users/show" do
       :first_name => "First Name",
       :last_name => "Last Name",
       :email => "Email",
-      :password_digest => "Password Digest"
+      :password => "MyString",
+      :password_confirmation => "MyString"
     ))
   end
 
@@ -16,6 +17,7 @@ describe "users/show" do
     rendered.should match(/First Name/)
     rendered.should match(/Last Name/)
     rendered.should match(/Email/)
-    rendered.should match(/Password Digest/)
+    rendered.should match(/Password/)
+    rendered.should match(/Password Confirmation/)
   end
 end

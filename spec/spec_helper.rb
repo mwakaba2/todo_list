@@ -12,10 +12,13 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+ActiveSupport::Deprecation.silenced = true
 
 RSpec.configure do |config|
   config.include TodoListHelpers, type: :feature
   config.include RailsDomIdHelper, type: :feature
+  config.include AuthenticationHelpers::Controller, type: :controller
+  config.include AuthenticationHelpers::Feature, type: :feature
   config.include FactoryGirl::Syntax::Methods
   # ## Mock Framework
   #
@@ -43,4 +46,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.expose_current_running_example_as :example
+  config.infer_spec_type_from_file_location!
 end
