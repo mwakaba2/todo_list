@@ -67,7 +67,17 @@ describe UsersController do
 
       it "redirects to the created user" do
         post :create, {:user => valid_attributes}, valid_session
-        response.should redirect_to(User.last)
+        response.should redirect_to(todo_lists_path)
+      end
+
+      it "sets the flash success message" do
+        post :create, {:user => valid_attributes}, valid_session
+        expect(flash[:success]).to eq("Thanks for signing up!")
+      end
+
+      it "sets the session user_id to the created user" do
+        post :create, {:user => valid_attributes}, valid_session
+        expect(session[:user_id]).to eq(User.find_by(email:valid_attributes["email"]).id)
       end
     end
 
