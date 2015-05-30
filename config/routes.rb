@@ -2,6 +2,7 @@ Odot::Application.routes.draw do
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
   
+  resources :password_resets, only: [:new, :create, :edit, :update]  
   resources :users
   resources :user_sessions, only: [:new, :create]
   resources :todo_lists do
